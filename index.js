@@ -64,7 +64,7 @@ const inventory = [
 ]
 
 // Task 1: Set the view engine to EJS. 
-
+app.set('view engine', 'ejs')
 
 
 app.use((req, res, next) => {
@@ -73,11 +73,13 @@ app.use((req, res, next) => {
 })
 
 // Task 1: Set up the static middleware
-
+app.use(express.static(__dirname + "/public"))
 
 
 // Task 2: Set up the route handler for / to send back the index.html file
-
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + “/public/index.html”)
+  })
 
 
 // Task 3: Set up the route handler for /mens which sends back category.ejs with the men's category object
